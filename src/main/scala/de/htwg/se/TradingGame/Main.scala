@@ -27,7 +27,6 @@ object Main extends JFXApp3 {
   val controller: IController = injector.getInstance(classOf[IController])
   val interpreter = injector.getInstance(classOf[Interpreter])
 
-//test
 
   val tui = new TUI(controller)
   val gui = new GUI(controller)
