@@ -26,7 +26,7 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
   val tradehittakeprofitlong = new Trade(1.07409, 1.07189, 1.08170, 2.0, "2023.01.12,11:12", "EURUSD")
   val fileio = new TradeDataXMLFileIO
   val gameStateManager: IGameStateManager = new GameStateManager(fileio)
-  gameStateManager.changeDatabaseConnectionString("jdbc:sqlite:src\\main\\scala\\de\\htwg\\se\\TradingGame\\Database\\testDatabase.db")
+  gameStateManager.changeDatabaseConnectionString("jdbc:sqlite:testDatabase.db")
   
   val tradeDoneCalculationstradenevertriggerslong = new TradeDoneCalculations(tradenevertriggerslong, gameStateManager)
   val tradeDoneCalculationstradenwvertriggersshort = new TradeDoneCalculations(tradenwvertriggersshort, gameStateManager)
