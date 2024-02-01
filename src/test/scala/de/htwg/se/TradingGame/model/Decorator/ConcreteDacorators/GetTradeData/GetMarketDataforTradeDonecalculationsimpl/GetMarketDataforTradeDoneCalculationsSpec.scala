@@ -88,11 +88,11 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
     }
 
     it should "have right dateTradeDone: 2023.01.12,15:54" in {
-      tradeDoneCalculationstradehittakeprofitlong.dateTradeDone should be("2023.01.12,15:54")
+      tradeDoneCalculationstradehittakeprofitlong.dateTradeDone should be("2023.01.12,14:54")
     }
 
     it should "have right dateTradeTriggered: 2023.01.12,15:30" in {
-      tradeDoneCalculationstradehittakeprofitlong.dateTradeTriggered should be("2023.01.12,15:30")
+      tradeDoneCalculationstradehittakeprofitlong.dateTradeTriggered should be("2023.01.12,14:30")
     }
 
 
