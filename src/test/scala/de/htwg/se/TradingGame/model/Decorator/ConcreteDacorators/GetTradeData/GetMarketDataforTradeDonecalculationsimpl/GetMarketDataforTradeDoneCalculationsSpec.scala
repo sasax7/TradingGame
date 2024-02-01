@@ -18,9 +18,14 @@ import java.sql.DriverManager
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.Timestamp
+import java.time.Clock
+import java.time.Instant
 import java.time.LocalDateTime
+import java.time.ZoneId
 
 class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matchers {
+  val fixedClock = Clock.fixed(Instant.parse("2023-01-12T15:54:00Z"), ZoneId.of("Europe/Berlin"))
+  val timeInTests = fixedClock.instant()
   val tradenevertriggerslong = new Trade(0.8, 0.6, 1.1, 2.0, "2023.01.09,12:12", "EURUSD")
   val tradenwvertriggersshort = new Trade(2.0, 2.1, 1.0, 2.0, "2023.01.09,12:12", "EURUSD")
   val tradehittakeprofitlong = new Trade(1.07409, 1.07189, 1.08170, 2.0, "2023.01.12,11:12", "EURUSD")
@@ -88,11 +93,11 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
     }
 
     it should "have right dateTradeDone: 2023.01.12,15:54" in {
-      tradeDoneCalculationstradehittakeprofitlong.dateTradeDone should be("2023.01.12,14:54")
+      tradeDoneCalculationstradehittakeprofitlong.dateTradeDone should be("2023.01.12,15:54")
     }
 
     it should "have right dateTradeTriggered: 2023.01.12,15:30" in {
-      tradeDoneCalculationstradehittakeprofitlong.dateTradeTriggered should be("2023.01.12,14:30")
+      tradeDoneCalculationstradehittakeprofitlong.dateTradeTriggered should be("2023.01.12,15:30")
     }
 
 
