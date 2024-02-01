@@ -24,8 +24,6 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 
 class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matchers {
-  val fixedClock = Clock.fixed(Instant.parse("2023-01-12T15:54:00Z"), ZoneId.of("Europe/Berlin"))
-  val timeInTests = fixedClock.instant()
   val tradenevertriggerslong = new Trade(0.8, 0.6, 1.1, 2.0, "2023.01.09,12:12", "EURUSD")
   val tradenwvertriggersshort = new Trade(2.0, 2.1, 1.0, 2.0, "2023.01.09,12:12", "EURUSD")
   val tradehittakeprofitlong = new Trade(1.07409, 1.07189, 1.08170, 2.0, "2023.01.12,11:12", "EURUSD")
