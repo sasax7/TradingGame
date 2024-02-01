@@ -21,52 +21,82 @@ import java.sql.Timestamp
 import java.time.LocalDateTime
 
 class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matchers {
-  val trade1 = new Trade(10, 5, 20, 2.0, "2023.04.02,12:12", "EURUSD")
-  val trade2 = new Trade(1.06873, 1.04717, 1.08410, 2.0, "2017.01.23,12:12", "EURUSD")
+  val tradenevertriggerslong = new Trade(0.8, 0.6, 1.1, 2.0, "2023.01.09,12:12", "EURUSD")
+  val tradenwvertriggersshort = new Trade(2.0, 2.1, 1.0, 2.0, "2023.01.09,12:12", "EURUSD")
+  val tradehittakeprofitlong = new Trade(1.07409, 1.07189, 1.08170, 2.0, "2023.01.12,11:12", "EURUSD")
   val fileio = new TradeDataXMLFileIO
   val gameStateManager: IGameStateManager = new GameStateManager(fileio)
-  gameStateManager.changeDatabaseConnectionString("jdbc:sqlite:src/main/scala/de/htwg/se/TradingGame/Database/litedbCandleSticks.db")
-  val tradeDoneCalculations1 = new TradeDoneCalculations(trade1, gameStateManager)
-  val tradeDoneCalculations2 = new TradeDoneCalculations(trade2, gameStateManager)
+  gameStateManager.changeDatabaseConnectionString("jdbc:sqlite:src\\main\\scala\\de\\htwg\\se\\TradingGame\\Database\\testDatabase.db")
+  
+  val tradeDoneCalculationstradenevertriggerslong = new TradeDoneCalculations(tradenevertriggerslong, gameStateManager)
+  val tradeDoneCalculationstradenwvertriggersshort = new TradeDoneCalculations(tradenwvertriggersshort, gameStateManager)
+  val tradeDoneCalculationstradehittakeprofitlong = new TradeDoneCalculations(tradehittakeprofitlong, gameStateManager)
 
 
-  "GetMarketDataforTradeDoneCalculations" should "have right currentprofit" in {
-      tradeDoneCalculations1.currentprofit should be(0.0)
+
+
+  "tradenevertriggerslong" should "have right currentprofit: 0.0" in {
+      tradeDoneCalculationstradenevertriggerslong.currentprofit should be(0.0)
     }
 
-    it should "have right endProfit" in {
-      tradeDoneCalculations1.endProfit should be(0.0)
+    it should "have right endProfit: 0.0" in {
+      tradeDoneCalculationstradenevertriggerslong.endProfit should be(0.0)
     }
 
-    it should "have right tradeWinOrLose" in {
-      tradeDoneCalculations1.tradeWinOrLose should be("Trade was not triggered")
+    it should "have right tradeWinOrLose: Trade was not triggered" in {
+      tradeDoneCalculationstradenevertriggerslong.tradeWinOrLose should be("Trade was not triggered")
     }
 
-    it should "have right dateTradeDone" in {
-      tradeDoneCalculations1.dateTradeDone should be("Trade was not triggered")
+    it should "have right dateTradeDone: Trade was not triggered" in {
+      tradeDoneCalculationstradenevertriggerslong.dateTradeDone should be("Trade was not triggered")
     }
 
-    it should "have right dateTradeTriggered" in {
-      tradeDoneCalculations1.dateTradeTriggered should be("Trade was not triggered")
+    it should "have right dateTradeTriggered: Trade was not triggered" in {
+      tradeDoneCalculationstradenevertriggerslong.dateTradeTriggered should be("Trade was not triggered")
     }
 
-  "GetMarketDataforTradeDoneCalculations with different trade data" should "have a current profit of 0.0" in {
-    tradeDoneCalculations2.currentprofit should be(0.0)
-  }
+  "tradenwvertriggersshort" should "have right currentprofit: 0.0" in {
+      tradeDoneCalculationstradenwvertriggersshort.currentprofit should be(0.0)
+    }
 
-  it should "endProfit have an end profit of 0.0" in {
-    tradeDoneCalculations2.endProfit should be(0.0)
-  }
+    it should "have right endProfit: 0.0" in {
+      tradeDoneCalculationstradenwvertriggersshort.endProfit should be(0.0)
+    }
 
-  it should "tradeWinOrLose indicate that the trade was not triggered" in {
-    tradeDoneCalculations2.tradeWinOrLose should be("Trade was not triggered")
-  }
+    it should "have right tradeWinOrLose: Trade was not triggered" in {
+      tradeDoneCalculationstradenwvertriggersshort.tradeWinOrLose should be("Trade was not triggered")
+    }
 
-  it should "dateTradeDone indicate that the trade was not done" in {
-    tradeDoneCalculations2.dateTradeDone should be("Trade was not triggered")
-  }
+    it should "have right dateTradeDone: Trade was not triggered" in {
+      tradeDoneCalculationstradenwvertriggersshort.dateTradeDone should be("Trade was not triggered")
+    }
 
-  it should "dateTradeTriggered indicate that the trade was not triggered" in {
-    tradeDoneCalculations2.dateTradeTriggered should be("Trade was not triggered")
-  }
+    it should "have right dateTradeTriggered: Trade was not triggered" in {
+      tradeDoneCalculationstradenwvertriggersshort.dateTradeTriggered should be("Trade was not triggered")
+    }
+
+  "tradehittakeprofitlong" should "have right currentprofit: 0.0" in {
+      tradeDoneCalculationstradehittakeprofitlong.currentprofit should be(0.0)
+    }
+
+    it should "have right endProfit: 0.06918" in {
+      tradeDoneCalculationstradehittakeprofitlong.endProfit should be(0.06918)
+    }
+
+    it should "have right tradeWinOrLose: Trade hit take profit" in {
+      tradeDoneCalculationstradehittakeprofitlong.tradeWinOrLose should be("Trade hit take profit")
+    }
+
+    it should "have right dateTradeDone: 2023.01.12,15:54" in {
+      tradeDoneCalculationstradehittakeprofitlong.dateTradeDone should be("2023.01.12,15:54")
+    }
+
+    it should "have right dateTradeTriggered: 2023.01.12,15:30" in {
+      tradeDoneCalculationstradehittakeprofitlong.dateTradeTriggered should be("2023.01.12,15:30")
+    }
+
+
+
+
+
 }

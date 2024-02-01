@@ -1,4 +1,5 @@
 jdbc:sqlite:src/main/scala/de/htwg/se/TradingGame/Database/litedbCandleSticks.db
+jdbc:sqlite:src\\main\\scala\\de\\htwg\\se\\TradingGame\\Database\\testDatabase.db
 postgresql://samueltim200:Bxmz1YTDf3OS@ep-rapid-band-08013103.eu-central-1.aws.neon.tech/CandleSticks?sslmode=require
 jdbc:oracle:thin:@oracle19c.in.htwg-konstanz.de:1521:ora19c
 jdbc:postgresql://localhost:5432/candlesticks

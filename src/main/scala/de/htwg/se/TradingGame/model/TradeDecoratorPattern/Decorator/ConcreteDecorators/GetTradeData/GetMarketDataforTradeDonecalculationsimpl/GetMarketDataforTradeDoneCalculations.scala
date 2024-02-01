@@ -26,6 +26,8 @@ class GetMarketDataforTradeDoneCalculations(trade: TradeComponent, gameStateMana
   try {
     conn = DriverManager.getConnection(url)
     didTradeWinnorLoose
+  } catch {
+    case e: SQLException => e.printStackTrace()
   } finally {
     if (conn != null) conn.close()
   }
