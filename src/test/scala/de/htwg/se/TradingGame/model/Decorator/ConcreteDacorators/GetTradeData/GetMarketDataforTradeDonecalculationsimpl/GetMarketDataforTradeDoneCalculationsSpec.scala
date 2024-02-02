@@ -31,6 +31,9 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
   val tradehitstoplosslong = new Trade(1.0812, 1.07905, 1.09106, 2.0, "2023.01.13,00:00", "EURUSD")
   val tradehitstoplossshort = new Trade(1.08513, 1.08786, 1.07509, 2.0, "2023.01.19,12:00", "EURUSD")
   val tradeafterlastdate = new Trade(1.08513, 1.08786, 1.07509, 2.0, "2024.01.24,12:00", "EURUSD")
+  val tradedidnothittakeprofitnorstoploss = new Trade(1.08513, 2.0, 1.0, 2.0, "2023.01.19,12:00", "EURUSD")
+  val tradehitstoplossbutnotakeprofitshort = new Trade(1.0812, 1.07905, 3.0, 2.0, "2023.01.13,00:00", "EURUSD")
+  val tradehittakeprofitbutnotstoplosslong = new Trade(1.07409, 0.9, 1.08170, 2.0, "2023.01.12,11:12", "EURUSD")
   //TODO: add more tests for different trades
 
   val fileio = new TradeDataXMLFileIO
@@ -44,6 +47,9 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
   val tradeDoneCalculationstradehitstoplosslong = new TradeDoneCalculations(tradehitstoplosslong, gameStateManager)
   val tradeDoneCalculationstradehitstoplossshort = new TradeDoneCalculations(tradehitstoplossshort, gameStateManager)
   val tradeDoneCalculationstradeafterlastdate = new TradeDoneCalculations(tradeafterlastdate, gameStateManager)
+  val tradeDoneCalculationstradedidnothittakeprofitnorstoploss = new TradeDoneCalculations(tradedidnothittakeprofitnorstoploss, gameStateManager)
+  val tradeDoneCalculationstradehitstoplossbutnotakeprofitshort = new TradeDoneCalculations(tradehitstoplossbutnotakeprofitshort, gameStateManager)
+  val tradeDoneCalculationstradehittakeprofitbutnotstoplosslong = new TradeDoneCalculations(tradehittakeprofitbutnotstoplosslong, gameStateManager)
 
 
 
@@ -186,9 +192,69 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
     it should "have right dateTradeTriggered: Trade was not triggered" in {
       tradeDoneCalculationstradeafterlastdate.dateTradeTriggered should be("Trade was not triggered")
     }
-    
+
+  "tradedidnothittakeprofitnorstoploss" should "have right currentprofit: 0.0" in {
+      tradeDoneCalculationstradedidnothittakeprofitnorstoploss.currentprofit should be(0.0)
+    }
+
+    it should "have right endProfit: 0.0" in {
+      tradeDoneCalculationstradedidnothittakeprofitnorstoploss.endProfit should be(0.0)
+    }
+
+    it should "have right tradeWinOrLose: Trade did not hit take profit or stop loss" in {
+      tradeDoneCalculationstradedidnothittakeprofitnorstoploss.tradeWinOrLose should be("Trade did not hit take profit or stop loss")
+    }
+
+    it should "have right dateTradeDone: Trade did not hit take profit or stop loss" in {
+      tradeDoneCalculationstradedidnothittakeprofitnorstoploss.dateTradeDone should be("Trade did not hit take profit or stop loss")
+    }
+
+    it should "have right dateTradeTriggered: 2023.01.20,10:08" in {
+      tradeDoneCalculationstradedidnothittakeprofitnorstoploss.dateTradeTriggered should be("2023.01.20,10:08")
+    }
 
 
+  "tradeDoneCalculationstradehitstoplossbutnotakeprofitshort" should "have right currentprofit: 0.0" in {
+      tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.currentprofit should be(0.0)
+    }
 
+    it should "have right endProfit: -0.02" in {
+      tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.endProfit should be(-0.02)
+    }
+
+    it should "have right tradeWinOrLose: Trade hit stop loss" in {
+      tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.tradeWinOrLose should be("Trade hit stop loss")
+    }
+
+    it should "have right dateTradeDone: 2023.01.13,00:00" in {
+      tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.dateTradeDone should be("2023.01.13,16:01")
+    }
+
+    it should "have right dateTradeTriggered: 2023.01.13,13:32" in {
+      tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.dateTradeTriggered should be("2023.01.13,13:32")
+    }
+
+  "tradeDoneCalculationstradehittakeprofitbutnotstoplosslong" should "have right currentprofit: 0.0" in {
+      tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.currentprofit should be(0.0)
+    }
+
+    it should "have right endProfit: 8.7E-4" in {
+      tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.endProfit should be(8.7E-4)
+    }
+
+    it should "have right tradeWinOrLose: Trade hit take profit" in {
+      tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.tradeWinOrLose should be("Trade hit take profit")
+    }
+
+    it should "have right dateTradeDone: 2023.01.12,15:54" in {
+      tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.dateTradeDone should be("2023.01.12,15:54")
+    }
+
+    it should "have right dateTradeTriggered: 2023.01.12,15:30" in {
+      tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.dateTradeTriggered should be("2023.01.12,15:30")
+    }
+
+
+  
 
 }
