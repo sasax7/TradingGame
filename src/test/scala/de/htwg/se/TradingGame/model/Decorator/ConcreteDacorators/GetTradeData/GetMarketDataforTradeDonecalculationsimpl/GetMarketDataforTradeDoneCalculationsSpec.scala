@@ -34,7 +34,6 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
   val tradedidnothittakeprofitnorstoploss = new Trade(1.08513, 2.0, 1.0, 2.0, "2023.01.19,12:00", "EURUSD")
   val tradehitstoplossbutnotakeprofitshort = new Trade(1.0812, 1.07905, 3.0, 2.0, "2023.01.13,00:00", "EURUSD")
   val tradehittakeprofitbutnotstoplosslong = new Trade(1.07409, 0.9, 1.08170, 2.0, "2023.01.12,11:12", "EURUSD")
-  //TODO: add more tests for different trades
 
   val fileio = new TradeDataXMLFileIO
   val gameStateManager: IGameStateManager = new GameStateManager(fileio)
