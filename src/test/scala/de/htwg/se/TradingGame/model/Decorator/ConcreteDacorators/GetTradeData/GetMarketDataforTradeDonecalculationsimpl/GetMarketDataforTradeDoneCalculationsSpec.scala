@@ -40,16 +40,16 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
   gameStateManager.changeDatabaseConnectionString("jdbc:sqlite:testDatabase.db")
   gameStateManager.changeStartBalance(1000.0)
   
-  val tradeDoneCalculationstradenevertriggerslong = new TradeDoneCalculations(tradenevertriggerslong, gameStateManager)
-  val tradeDoneCalculationstradenwvertriggersshort = new TradeDoneCalculations(tradenwvertriggersshort, gameStateManager)
-  val tradeDoneCalculationstradehittakeprofitlong = new TradeDoneCalculations(tradehittakeprofitlong, gameStateManager)
-  val tradeDoneCalculationstradehittakeprofitshort = new TradeDoneCalculations(tradehittakeprofitshort, gameStateManager)
-  val tradeDoneCalculationstradehitstoplosslong = new TradeDoneCalculations(tradehitstoplosslong, gameStateManager)
-  val tradeDoneCalculationstradehitstoplossshort = new TradeDoneCalculations(tradehitstoplossshort, gameStateManager)
-  val tradeDoneCalculationstradeafterlastdate = new TradeDoneCalculations(tradeafterlastdate, gameStateManager)
-  val tradeDoneCalculationstradedidnothittakeprofitnorstoploss = new TradeDoneCalculations(tradedidnothittakeprofitnorstoploss, gameStateManager)
-  val tradeDoneCalculationstradehitstoplossbutnotakeprofitshort = new TradeDoneCalculations(tradehitstoplossbutnotakeprofitshort, gameStateManager)
-  val tradeDoneCalculationstradehittakeprofitbutnotstoplosslong = new TradeDoneCalculations(tradehittakeprofitbutnotstoplosslong, gameStateManager)
+  val tradeDoneCalculationstradenevertriggerslong = new TradeDoneCalculations(tradenevertriggerslong, gameStateManager, 1)
+  val tradeDoneCalculationstradenwvertriggersshort = new TradeDoneCalculations(tradenwvertriggersshort, gameStateManager, 1)
+  val tradeDoneCalculationstradehittakeprofitlong = new TradeDoneCalculations(tradehittakeprofitlong, gameStateManager, 1)
+  val tradeDoneCalculationstradehittakeprofitshort = new TradeDoneCalculations(tradehittakeprofitshort, gameStateManager, 1)
+  val tradeDoneCalculationstradehitstoplosslong = new TradeDoneCalculations(tradehitstoplosslong, gameStateManager, 1)
+  val tradeDoneCalculationstradehitstoplossshort = new TradeDoneCalculations(tradehitstoplossshort, gameStateManager, 1)
+  val tradeDoneCalculationstradeafterlastdate = new TradeDoneCalculations(tradeafterlastdate, gameStateManager, 1)
+  val tradeDoneCalculationstradedidnothittakeprofitnorstoploss = new TradeDoneCalculations(tradedidnothittakeprofitnorstoploss, gameStateManager, 1)
+  val tradeDoneCalculationstradehitstoplossbutnotakeprofitshort = new TradeDoneCalculations(tradehitstoplossbutnotakeprofitshort, gameStateManager, 1)
+  val tradeDoneCalculationstradehittakeprofitbutnotstoplosslong = new TradeDoneCalculations(tradehittakeprofitbutnotstoplosslong, gameStateManager, 1)
 
 
 
