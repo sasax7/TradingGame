@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<GameState>
+        <Balance>100000.0</Balance>
+        <BacktestDate>1587823920</BacktestDate>
+        <StartBalance>100000.0</StartBalance>
+        <Pair>EURUSD</Pair>
+        <SaveName>EURUSDEval</SaveName>
+        <EndDate>1705074960</EndDate>
+        <StartDate>31791600</StartDate>
+        <DatabaseConnectionString>jdbc:sqlite:src/main/scala/de/htwg/se/TradingGame/Database/litedbCandleSticks.db</DatabaseConnectionString>
+        <DistanceCandles>3600</DistanceCandles>
+        <Interval>1h</Interval>
+        <DoneTrades>
+          <DoneTrades>
+        <entryTrade>1.09099</entryTrade>
+        <stopLossTrade>1.09288</stopLossTrade>
+        <takeProfitTrade>1.08885</takeProfitTrade>
+        <risk>5.0</risk>
+        <datestart>2020.02.14,12:12</datestart>
+        <ticker>EURUSD</ticker>
+        <dateTradeTriggered>2020.02.27,02:10</dateTradeTriggered>
+        <tradeWinOrLose>Trade hit stop loss</tradeWinOrLose>
+        <dateTradeDone>2020.02.27,10:06</dateTradeDone>
+        <currentprofit>0.0</currentprofit>
+        <endProfit>-5000.0</endProfit>
+      </DoneTrades><DoneTrades>
+        <entryTrade>1.08375</entryTrade>
+        <stopLossTrade>1.08662</stopLossTrade>
+        <takeProfitTrade>1.08103</takeProfitTrade>
+        <risk>5.0</risk>
+        <datestart>2020.02.21,06:12</datestart>
+        <ticker>EURUSD</ticker>
+        <dateTradeTriggered>2020.02.21,16:48</dateTradeTriggered>
+        <tradeWinOrLose>Trade hit take profit</tradeWinOrLose>
+        <dateTradeDone>2020.02.24,09:08</dateTradeDone>
+        <currentprofit>0.0</currentprofit>
+        <endProfit>4739.0</endProfit>
+      </DoneTrades><DoneTrades>
+        <entryTrade>1.08006</entryTrade>
+        <stopLossTrade>1.07755</stopLossTrade>
+        <takeProfitTrade>1.08287</takeProfitTrade>
+        <risk>5.0</risk>
+        <datestart>2020.02.22,04:12</datestart>
+        <ticker>EURUSD</ticker>
+        <dateTradeTriggered>2020.03.19,12:24</dateTradeTriggered>
+        <tradeWinOrLose>Trade hit stop loss</tradeWinOrLose>
+        <dateTradeDone>2020.03.19,13:23</dateTradeDone>
+        <currentprofit>0.0</currentprofit>
+        <endProfit>-5000.0</endProfit>
+      </DoneTrades><DoneTrades>
+        <entryTrade>1.10048</entryTrade>
+        <stopLossTrade>1.09434</stopLossTrade>
+        <takeProfitTrade>1.10729</takeProfitTrade>
+        <risk>5.0</risk>
+        <datestart>2020.03.02,13:12</datestart>
+        <ticker>EURUSD</ticker>
+        <dateTradeTriggered>2020.03.17,13:13</dateTradeTriggered>
+        <tradeWinOrLose>Trade hit stop loss</tradeWinOrLose>
+        <dateTradeDone>2020.03.18,14:58</dateTradeDone>
+        <currentprofit>0.0</currentprofit>
+        <endProfit>-5000.0</endProfit>
+      </DoneTrades><DoneTrades>
+        <entryTrade>1.11399</entryTrade>
+        <stopLossTrade>1.10904</stopLossTrade>
+        <takeProfitTrade>1.11931</takeProfitTrade>
+        <risk>5.0</risk>
+        <datestart>2020.03.04,10:12</datestart>
+        <ticker>EURUSD</ticker>
+        <dateTradeTriggered>2020.03.04,12:51</dateTradeTriggered>
+        <tradeWinOrLose>Trade hit take profit</tradeWinOrLose>
+        <dateTradeDone>2020.03.05,14:14</dateTradeDone>
+        <currentprofit>0.0</currentprofit>
+        <endProfit>5374.0</endProfit>
+      </DoneTrades><DoneTrades>
+        <entryTrade>1.11804</entryTrade>
+        <stopLossTrade>1.12434</stopLossTrade>
+        <takeProfitTrade>1.10855</takeProfitTrade>
+        <risk>5.0</risk>
+        <datestart>2020.03.18,03:12</datestart>
+        <ticker>EURUSD</ticker>
+        <dateTradeTriggered>2020.06.02,12:10</dateTradeTriggered>
+        <tradeWinOrLose>Trade hit stop loss</tradeWinOrLose>
+        <dateTradeDone>2020.06.03,18:38</dateTradeDone>
+        <currentprofit>0.0</currentprofit>
+        <endProfit>-5000.0</endProfit>
+      </DoneTrades><DoneTrades>
+        <entryTrade>1.08537</entryTrade>
+        <stopLossTrade>1.08897</stopLossTrade>
+        <takeProfitTrade>1.07987</takeProfitTrade>
+        <risk>5.0</risk>
+        <datestart>2020.04.24,03:12</datestart>
+        <ticker>EURUSD</ticker>
+        <dateTradeTriggered>2020.04.27,09:07</dateTradeTriggered>
+        <tradeWinOrLose>Trade hit stop loss</tradeWinOrLose>
+        <dateTradeDone>2020.04.30,10:05</dateTradeDone>
+        <currentprofit>0.0</currentprofit>
+        <endProfit>-5000.0</endProfit>
+      </DoneTrades>
+        </DoneTrades>
+      </GameState>

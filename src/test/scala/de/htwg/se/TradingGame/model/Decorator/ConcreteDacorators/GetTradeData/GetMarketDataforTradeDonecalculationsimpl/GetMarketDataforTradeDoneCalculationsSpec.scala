@@ -38,6 +38,7 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
   val fileio = new TradeDataXMLFileIO
   val gameStateManager: IGameStateManager = new GameStateManager(fileio)
   gameStateManager.changeDatabaseConnectionString("jdbc:sqlite:testDatabase.db")
+  gameStateManager.changeStartBalance(1000.0)
   
   val tradeDoneCalculationstradenevertriggerslong = new TradeDoneCalculations(tradenevertriggerslong, gameStateManager)
   val tradeDoneCalculationstradenwvertriggersshort = new TradeDoneCalculations(tradenwvertriggersshort, gameStateManager)
@@ -96,8 +97,8 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
       tradeDoneCalculationstradehittakeprofitlong.currentprofit should be(0.0)
     }
 
-    it should "have right endProfit: 0.06918" in {
-      tradeDoneCalculationstradehittakeprofitlong.endProfit should be(0.06918)
+    it should "have right endProfit: 69.18" in {
+      tradeDoneCalculationstradehittakeprofitlong.endProfit should be(69.18)
     }
 
     it should "have right tradeWinOrLose: Trade hit take profit" in {
@@ -116,8 +117,8 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
       tradeDoneCalculationstradehittakeprofitshort.currentprofit should be(0.0)
     }
 
-    it should "have right endProfit: 0.0198" in {
-      tradeDoneCalculationstradehittakeprofitshort.endProfit should be(0.0198)
+    it should "have right endProfit: 19.8" in {
+      tradeDoneCalculationstradehittakeprofitshort.endProfit should be(19.8)
     }
 
     it should "have right tradeWinOrLose: Trade hit take profit" in {
@@ -136,8 +137,8 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
       tradeDoneCalculationstradehitstoplosslong.currentprofit should be(0.0)
     }
 
-    it should "have right endProfit: -0.02" in {
-      tradeDoneCalculationstradehitstoplosslong.endProfit should be(-0.02)
+    it should "have right endProfit: -20.0" in {
+      tradeDoneCalculationstradehitstoplosslong.endProfit should be(-20.0)
     }
 
     it should "have right tradeWinOrLose: Trade hit stop loss" in {
@@ -156,8 +157,8 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
       tradeDoneCalculationstradehitstoplossshort.currentprofit should be(0.0)
     }
 
-    it should "have right endProfit: -0.02" in {
-      tradeDoneCalculationstradehitstoplossshort.endProfit should be(-0.02)
+    it should "have right endProfit: -20.0" in {
+      tradeDoneCalculationstradehitstoplossshort.endProfit should be(-20.0)
     }
 
     it should "have right tradeWinOrLose: Trade hit stop loss" in {
@@ -217,8 +218,8 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
       tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.currentprofit should be(0.0)
     }
 
-    it should "have right endProfit: -0.02" in {
-      tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.endProfit should be(-0.02)
+    it should "have right endProfit: -20.0" in {
+      tradeDoneCalculationstradehitstoplossbutnotakeprofitshort.endProfit should be(-20.0)
     }
 
     it should "have right tradeWinOrLose: Trade hit stop loss" in {
@@ -237,8 +238,8 @@ class GetMarketDataforTradeDoneCalculationsSpec extends AnyFlatSpec with Matcher
       tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.currentprofit should be(0.0)
     }
 
-    it should "have right endProfit: 8.7E-4" in {
-      tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.endProfit should be(8.7E-4)
+    it should "have right endProfit: 0.87" in {
+      tradeDoneCalculationstradehittakeprofitbutnotstoplosslong.endProfit should be(0.87)
     }
 
     it should "have right tradeWinOrLose: Trade hit take profit" in {

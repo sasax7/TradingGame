@@ -19,6 +19,7 @@ import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.GetMar
 import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.GetMarktDataforInterpreterFolder.GetMarketDataforInterpreter._
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeDoneCalculations
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.Trade
+import de.htwg.se.TradingGame.view.GUI.Stages.EvaluationStage
 
 class BacktestInterpreter @Inject() (val gameStateManager: IGameStateManager) extends Interpreter {
   val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd,HH:mm").withZone(ZoneId.systemDefault())
@@ -98,7 +99,7 @@ class BacktestInterpreter @Inject() (val gameStateManager: IGameStateManager) ex
     val trade = new Trade(entry, stoploss, takeprofit, riskpercent, datestart, ticker)
     val tradebuffer = gameStateManager.currentState.trades += trade
     gameStateManager.changeTrades(tradebuffer)
-    val tradeDoneCalculationsFuture = Future { TradeDoneCalculations(trade, gameStateManager)}
+    val tradeDoneCalculationsFuture = Future { TradeDoneCalculations(trade, gameStateManager, 1)}
     tradeDoneCalculationsFuture.onComplete {
       case Success(tradeDoneCalculations) =>
         val tradeDoneCalculationsBuffer = gameStateManager.currentState.doneTrades += tradeDoneCalculations
@@ -107,7 +108,7 @@ class BacktestInterpreter @Inject() (val gameStateManager: IGameStateManager) ex
     }
     (s"Ticker: ${ticker}\nDate: ${datestart}\nAdded trade with entry $entry, stoploss $stoploss, takeprofit $takeprofit, riskpercent $riskpercent, TradeBuffer ${gameStateManager.currentState.doneTrades}", this)
   
-  def doQuit(input: String): (String, BacktestInterpreter) = (printmarketdata.closeProgram, BacktestInterpreter(gameStateManager))
+  def doQuit(input: String): (String, EvaluationInterpreter) =  ("Evaluation Stage", EvaluationInterpreter(gameStateManager))//(printmarketdata.closeProgram, BacktestInterpreter(gameStateManager))
   override def resetState: Interpreter =  BacktestInterpreter(gameStateManager)
   
   override val actions: Map[String, String => (String, Interpreter)] =

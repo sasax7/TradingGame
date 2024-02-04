@@ -6,6 +6,7 @@ import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.Backte
 import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.BalanceInterpreter
 import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.ChoosePairAndDateInterpreter
 import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.DatabaseSelectorInterpreter
+import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.EvaluationInterpreter
 import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.LoadorNewFileInterpreter
 import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.LoginInterpreter
 import de.htwg.se.TradingGame.model.InterpretterComponent.Interpreterimpl.SelectLoadFileInterpreter
@@ -64,6 +65,9 @@ class GUI(controller: IController) extends JFXApp3 with Observer {
           previousInterpreter = Some(currentInterpreter)
         } else if (currentInterpreter.isInstanceOf[DatabaseSelectorInterpreter]) {
           new DatabaseSelectorStage(controller).createStage().show()
+          previousInterpreter = Some(currentInterpreter)
+        } else if (currentInterpreter.isInstanceOf[EvaluationInterpreter]) {
+          new EvaluationStage(controller).createStage().show()
           previousInterpreter = Some(currentInterpreter)
         }
       }
