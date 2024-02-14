@@ -8,7 +8,9 @@ import de.htwg.se.TradingGame.model.TradeDecoratorPattern._
 
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.ListBuffer
-
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.TradeDecorator
+import de.htwg.se.TradingGame.model.EvalMapDesign.IEvalTradeData
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeAdvancedData
 
 class ChangeBacktestDateCommand(newBacktestDate: Long) extends IGameCommand {
   override def execute(state: GameState): GameState = {
@@ -27,6 +29,10 @@ class ChangeBacktestDateCommand(newBacktestDate: Long) extends IGameCommand {
       override def loadFileList: List[String] = state.loadFileList
       override def distancecandles: Int = state.distancecandles
       override def interval: String = state.interval
+      override def currentPrice: Double = state.currentPrice
+      override def evalTradeData: IEvalTradeData = state.evalTradeData
+      override def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData] = state.doneTradesAdvanced
+
       
     }
   }

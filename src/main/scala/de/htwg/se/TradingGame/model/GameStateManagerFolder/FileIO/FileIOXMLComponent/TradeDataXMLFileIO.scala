@@ -8,6 +8,7 @@ import de.htwg.se.TradingGame.model.FileIO.TradeDataFileIO
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeDoneCalculations
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.Trade
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.TradeComponent
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeAdvancedData
 
 class TradeDataXMLFileIO extends TradeDataFileIO{
   override def saveData(gameState: GameState,  filename: String): Unit = 
@@ -92,5 +93,9 @@ class TradeDataXMLFileIO extends TradeDataFileIO{
       override def interval = intervall
       override def pairList: List[String] = List.empty[String]
       override def loadFileList: List[String] = List.empty[String]
+      override def currentPrice: Double = 0
+      override def evalTradeData = null
+      override def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData] = ArrayBuffer.empty[TradeAdvancedData]
+
     }
 }

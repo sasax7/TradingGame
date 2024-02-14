@@ -1,4 +1,4 @@
-package de.htwg.se.TradingGame.model.GaneStateManagerFolder.GameCommand.ChangegameCommandImplementation
+package de.htwg.se.TradingGame.model.GameStateManagerFolder.GameCommand.ChangegameCommandImplementation
 
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern._
 import scala.collection.mutable.ArrayBuffer
@@ -8,9 +8,11 @@ import de.htwg.se.TradingGame.model.GaneStateManagerFolder.GameCommand.IGameComm
 import de.htwg.se.TradingGame.model.GameStateManagerFolder.GameStateFolder.DefaultGameStateimpl.DefaultGameState
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeDoneCalculations
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.TradeComponent
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.TradeDecorator
 import de.htwg.se.TradingGame.model.EvalMapDesign.IEvalTradeData
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeAdvancedData
-class ChangeIntervalCommand(newInterval: String) extends IGameCommand {
+
+class ChangeDoneTradesAdvancedCommand(newDoneTradesAdvanced: ArrayBuffer[TradeAdvancedData]) extends IGameCommand {
   override def execute(state: GameState): GameState = {
     new DefaultGameState {
       override def balance: Double = state.balance
@@ -24,13 +26,12 @@ class ChangeIntervalCommand(newInterval: String) extends IGameCommand {
       override def startDate: Long = state.startDate
       override def databaseConnectionString: String = state.databaseConnectionString
       override def distancecandles: Int = state.distancecandles
-      override def interval: String = newInterval
+      override def interval: String = state.interval
       override def pairList: List[String] = state.pairList
       override def loadFileList: List[String] = state.loadFileList
       override def currentPrice: Double = state.currentPrice
       override def evalTradeData: IEvalTradeData = state.evalTradeData
-      override def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData] = state.doneTradesAdvanced
-      
+      override def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData] = newDoneTradesAdvanced
     }
   }
 }

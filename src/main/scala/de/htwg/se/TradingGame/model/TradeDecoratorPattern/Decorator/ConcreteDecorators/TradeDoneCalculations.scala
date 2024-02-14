@@ -20,8 +20,6 @@ class TradeDoneCalculations private (trade: TradeComponent, gameStateManager: IG
   var endProfit: Double = _
   var riskRewardRatio: Double = _
   var rRMade: Double = _
-  var maxRbeforeStopLoss: Double = _ //TODO:
-  var minStoploss: Double = _//TODO:
 
   // First constructor that performs calculations
   def this(trade: TradeComponent, gameStateManager: IGameStateManager, number: Integer) = {

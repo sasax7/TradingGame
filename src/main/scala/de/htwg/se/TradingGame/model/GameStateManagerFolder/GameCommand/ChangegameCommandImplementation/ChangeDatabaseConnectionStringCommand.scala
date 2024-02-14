@@ -9,7 +9,9 @@ import de.htwg.se.TradingGame.model.TradeDecoratorPattern._
 
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.ListBuffer
-
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.TradeDecorator
+import de.htwg.se.TradingGame.model.EvalMapDesign.IEvalTradeData
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeAdvancedData
 class ChangeDatabaseConnectionStringCommand(newDatabaseConnectionString: String) extends IGameCommand {
   override def execute(state: GameState): GameState = {
     new DefaultGameState {
@@ -27,6 +29,9 @@ class ChangeDatabaseConnectionStringCommand(newDatabaseConnectionString: String)
       override def interval: String = state.interval
       override def pairList: List[String] = state.pairList
       override def loadFileList: List[String] = state.loadFileList
+      override def currentPrice: Double = state.currentPrice
+      override def evalTradeData: IEvalTradeData = state.evalTradeData
+      override def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData] = state.doneTradesAdvanced
     }
   }
 }

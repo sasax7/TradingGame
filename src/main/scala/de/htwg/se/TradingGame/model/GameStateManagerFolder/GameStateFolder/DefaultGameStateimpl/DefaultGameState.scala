@@ -9,8 +9,10 @@ import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDeco
 import de.htwg.se.TradingGame.model.GameStateManagerFolder.GameStateFolder.GameState
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.ListBuffer
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.TradeDecorator
+import de.htwg.se.TradingGame.model.EvalMapDesign.IEvalTradeData
 
-class DefaultGameState  @Inject() extends GameState {
+class DefaultGameState extends GameState {
   override def balance: Double = 0.0
   override def backtestDate: Long = 0L
   override def trades: ArrayBuffer[TradeComponent] = ArrayBuffer.empty
@@ -21,8 +23,11 @@ class DefaultGameState  @Inject() extends GameState {
   override def endDate: Long = 0L
   override def startDate: Long = 0L
   override def databaseConnectionString: String = ""
+  override def pairList: List[String] = List.empty[String]
   override def distancecandles: Int = 0
   override def interval: String = "1h"
-  override def pairList: List[String] = List.empty[String]
-  override def loadFileList: List[String] =  List.empty[String]
+  override def loadFileList: List[String] = List.empty[String]
+  override def currentPrice: Double = 0.0
+  override def evalTradeData: IEvalTradeData = null 
+  override def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData] = ArrayBuffer.empty
 }

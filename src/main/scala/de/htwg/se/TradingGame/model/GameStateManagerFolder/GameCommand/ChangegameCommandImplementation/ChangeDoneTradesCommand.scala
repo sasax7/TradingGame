@@ -6,6 +6,9 @@ import de.htwg.se.TradingGame.model.GaneStateManagerFolder.GameCommand.IGameComm
 import de.htwg.se.TradingGame.model.GameStateManagerFolder.GameStateFolder.DefaultGameStateimpl.DefaultGameState
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeDoneCalculations
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.TradeComponent
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.TradeDecorator
+import de.htwg.se.TradingGame.model.EvalMapDesign.IEvalTradeData
+import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators.TradeAdvancedData
 
 class ChangeDoneTradesCommand(newDoneTrades: ArrayBuffer[TradeDoneCalculations]) extends IGameCommand {
   override def execute(state: GameState): GameState = {
@@ -24,6 +27,10 @@ class ChangeDoneTradesCommand(newDoneTrades: ArrayBuffer[TradeDoneCalculations])
       override def interval: String = state.interval
       override def pairList: List[String] = state.pairList
       override def loadFileList: List[String] = state.loadFileList
+      override def currentPrice: Double = state.currentPrice
+      override def evalTradeData: IEvalTradeData = state.evalTradeData
+      override def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData] = state.doneTradesAdvanced
+      
     }
   }
 }

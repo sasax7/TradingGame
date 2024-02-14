@@ -5,7 +5,7 @@ import com.google.inject.Injector
 import com.google.inject.name.Names
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.Decorator.ConcreteDecorators._
 import de.htwg.se.TradingGame.model.TradeDecoratorPattern.TradeComponent
-
+import de.htwg.se.TradingGame.model.EvalMapDesign.IEvalTradeData
 import java.util.concurrent.CopyOnWriteArrayList
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.ListBuffer
@@ -25,6 +25,11 @@ trait GameState {
   def distancecandles: Int
   def interval: String
   def loadFileList: List[String]
+  def currentPrice: Double
+  def evalTradeData: IEvalTradeData
+  def doneTradesAdvanced: ArrayBuffer[TradeAdvancedData]
+  
+
   override def toString: String = {
   s"""
     |Balance: $balance
