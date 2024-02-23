@@ -4,6 +4,8 @@
 
 Presentation:
 https://docs.google.com/presentation/d/1eYcnVzpSeUpM56wQZOsD7zCDMb2xelQF9tPADKPgoMI/edit#slide=id.g2b2ecd99fe0_0_50
+
+
 Database is on USB Stick
 
 This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
